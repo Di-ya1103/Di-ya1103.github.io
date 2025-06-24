@@ -3,21 +3,118 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Portfolio</title>
+  <title>Diya's Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <style>
-    body { font-family: Arial, sans-serif; margin: 40px; }
-    h1 { color: #2c3e50; }
+    body {
+      background-color: #1e3a8a; /* Dark blue background */
+      color: #e5e7eb; /* Light text for contrast */
+    }
+    .project-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 0.6s ease-out forwards;
+      opacity: 0;
+    }
+    .project-card:nth-child(1) { animation-delay: 0.1s; }
+    .project-card:nth-child(2) { animation-delay: 0.2s; }
+    .project-card:nth-child(3) { animation-delay: 0.3s; }
+    .project-card:nth-child(4) { animation-delay: 0.4s; }
+    .project-card:nth-child(5) { animation-delay: 0.5s; }
+    .project-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .header-text {
+      animation: slideIn 1s ease-out;
+    }
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
   </style>
 </head>
-<body>
-  <h1>Hello, I'm Diya</h1>
-  <p>Welcome to my portfolio! Here are some of my projects:</p>
-  <ul>
-    <li><a href="https://github.com/Di-ya1103/Student_mngmnt_new.git">Project 1</a></li>
-    <li><a href="https://github.com/Di-ya1103/marvel-food.git">Project 2</a></li>
-    <li><a href="https://github.com/Di-ya1103/couponai-main.git">Project 3</a></li>
-    <li><a href="https://github.com/Di-ya1103/image_restore.git">Project 4</a></li>
-    <li><a href="https://github.com/Di-ya1103/methane_molecule_ar_vr.git">Project 5</a></li>
-  </ul>
+<body class="min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-blue-900 to-indigo-900 text-white py-12 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold header-text">Diya's Portfolio</h1>
+    <p class="mt-4 text-lg md:text-xl header-text">Welcome to my creative space! Explore my projects below.</p>
+  </header>
+
+  <!-- Projects Section -->
+  <section class="container mx-auto px-4 py-12">
+    <h2 class="text-3xl font-semibold text-white mb-8 text-center animate-pulse">My Projects</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Project 1 -->
+      <div class="project-card bg-blue-800 rounded-lg shadow-lg p-6">
+        <h3 class="text-xl font-bold text-white">Student Management System</h3>
+        <p class="mt-2 text-gray-300">A system to manage student records efficiently.</p>
+        <a href="https://github.com/Di-ya1103/Student_mngmnt_new.git" class="mt-4 inline-block text-blue-300 hover:text-blue-100 font-semibold">View on GitHub</a>
+      </div>
+      <!-- Project 2 -->
+      <div class="project-card bg-blue-800 rounded-lg shadow-lg p-6">
+        <h3 class="text-xl font-bold text-white">Marvel Food</h3>
+        <p class="mt-2 text-gray-300">A food-related web application with a modern UI.</p>
+        <a href="https://github.com/Di-ya1103/marvel-food.git" class="mt-4 inline-block text-blue-300 hover:text-blue-100 font-semibold">View on GitHub</a>
+      </div>
+      <!-- Project 3 -->
+      <div class="project-card bg-blue-800 rounded-lg shadow-lg p-6">
+        <h3 class="text-xl font-bold text-white">CouponAI</h3>
+        <p class="mt-2 text-gray-300">An AI-powered coupon management system.</p>
+        <a href="https://github.com/Di-ya1103/couponai-main.git" class="mt-4 inline-block text-blue-300 hover:text-blue-100 font-semibold">View on GitHub</a>
+      </div>
+      <!-- Project 4 -->
+      <div class="project-card bg-blue-800 rounded-lg shadow-lg p-6">
+        <h3 class="text-xl font-bold text-white">Image Restore</h3>
+        <p class="mt-2 text-gray-300">A tool for restoring and enhancing images.</p>
+        <a href="https://github.com/Di-ya1103/image_restore.git" class="mt-4 inline-block text-blue-300 hover:text-blue-100 font-semibold">View on GitHub</a>
+      </div>
+      <!-- Project 5 -->
+      <div class="project-card bg-blue-800 rounded-lg shadow-lg p-6">
+        <h3 class="text-xl font-bold text-white">Methane Molecule AR/VR</h3>
+        <p class="mt-2 text-gray-300">An AR/VR visualization of the methane molecule.</p>
+        <a href="https://github.com/Di-ya1103/methane_molecule_ar_vr.git" class="mt-4 inline-block text-blue-300 hover:text-blue-100 font-semibold">View on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="bg-blue-900 text-white py-12 text-center">
+    <h2 class="text-3xl font-semibold animate-bounce">Get in Touch</h2>
+    <p class="mt-4 text-lg">Interested in collaborating or learning more? Reach out!</p>
+    <a href="mailto:your.email@example.com" class="mt-6 inline-block bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-500 transition-colors duration-300">Contact Me</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-indigo-900 text-white text-center py-4">
+    <p>© 2025 Diya. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript for Smooth Scroll -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
 </body>
 </html>
