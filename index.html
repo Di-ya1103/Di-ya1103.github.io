@@ -5,108 +5,161 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Diya's Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <style>
     body {
-      background-color: #1e3a8a; /* Dark blue background */
-      color: #e5e7eb; /* Light text for contrast */
+      background-color: #112867; /* Dark blue background */
+      color: #ffffff; /* White text for all body content */
+      overflow-x: hidden;
+    }
+    h1, h2, h3, p, a {
+      color: #ffffff; /* Ensure all headings, paragraphs, and links are white */
+    }
+    a:hover {
+      color: #e5e7eb; /* Light gray for hover to maintain visibility */
+    }
+    .gradient-text {
+      background: linear-gradient(to right, #afafbe, #f43f5e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; /* Keep gradient for headings */
     }
     .project-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: fadeInUp 0.6s ease-out forwards;
-      opacity: 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      border: 2px solid transparent;
     }
-    .project-card:nth-child(1) { animation-delay: 0.1s; }
-    .project-card:nth-child(2) { animation-delay: 0.2s; }
-    .project-card:nth-child(3) { animation-delay: 0.3s; }
-    .project-card:nth-child(4) { animation-delay: 0.4s; }
-    .project-card:nth-child(5) { animation-delay: 0.5s; }
     .project-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 10px 20px rgba(16, 14, 164, 0.3), 0 0 15px #2c6b6f;
+      border-color: #2c6b6f;
+      background-color: #13234d;
+    }
+    .header-bg {
+      background: url('https://images.unsplash.com/photo-1557683311-eac922347aa1') no-repeat center center/cover;
+      position: relative;
+      z-index: 1;
+    }
+    .header-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(30, 58, 138, 0.8), rgba(55, 48, 163, 0.8));
+      z-index: -1;
+    }
+    .photo-placeholder {
+      background-color: #2c6b6f;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .photo-placeholder:hover {
+      transform: scale(1.02);
+      box-shadow: 0 5px 15px rgba(44, 107, 111, 0.5);
+    }
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    .contact-section {
+      position: relative;
+      overflow: hidden;
     }
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .header-text {
-      animation: slideIn 1s ease-out;
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateX(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
 <body class="min-h-screen flex flex-col">
   <!-- Header -->
-  <header class="bg-gradient-to-r from-blue-900 to-indigo-900 text-white py-12 text-center">
-    <h1 class="text-4xl md:text-5xl font-bold header-text">Diya's Portfolio</h1>
-    <p class="mt-4 text-lg md:text-xl header-text">Welcome to my creative space! Explore my projects below.</p>
+  <header class="header-bg text-white py-16 text-center" data-aos="fade-down" data-aos-duration="1000">
+    <h1 class="text-4xl md:text-5xl font-bold gradient-text">Diya's Portfolio</h1>
+    <p class="mt-4 text-lg md:text-xl" data-aos="fade-up" data-aos-delay="200">Welcome to my creative space! Explore my projects below.</p>
   </header>
 
+  <!-- About Section -->
+  <section class="container mx-auto px-4 py-12 bg-gray-900 rounded-lg" data-aos="fade-up" data-aos-duration="1200">
+    <h2 class="text-3xl font-semibold gradient-text mb-8 text-center">About Me</h2>
+    <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+      <div class="photo-placeholder w-48 h-48 md:w-64 md:h-64 rounded-full flex items-center justify-center overflow-hidden" data-aos="zoom-in" data-aos-delay="200">
+        <img src="C:\Users\Diya\Downloads\diyaphoto.jpg" alt="Diya's Photo" class="w-full h-full object-cover" onerror="this.style.display='none';this.parentElement.innerHTML='Add Your Photo Here';" />
+      </div>
+      <div class="text-center md:text-left" data-aos="fade-right" data-aos-delay="400">
+        <h3 class="text-2xl font-bold">Diya</h3>
+        <p class="mt-2">Passionate developer with a focus on innovative web, AR/VR, and data analysis solutions.</p>
+        <p class="mt-2"><strong>Skills:</strong> JavaScript, Python, HTML/CSS, AI, AR/VR Development</p>
+        <p class="mt-2"><strong>Location:</strong> Vadodara, Gujarat</p>
+        <p class="mt-2"><strong>Email:</strong> <a href="mailto:diya.dave1103@gmail.com" class="hover:text-gray-200">diya.dave1103@gmail.com</a></p>
+        <p class="mt-2"><strong>GitHub:</strong> <a href="https://github.com/Di-ya1103" class="hover:text-gray-200">Di-ya1103</a></p>
+      </div>
+    </div>
+  </section>
+
   <!-- Projects Section -->
-  <section class="container mx-auto px-4 py-12">
-    <h2 class="text-3xl font-semibold text-white mb-8 text-center animate-pulse">My Projects</h2>
+  <section class="container mx-auto px-4 py-12" data-aos="fade-up" data-aos-duration="1200">
+    <h2 class="text-3xl font-semibold gradient-text mb-8 text-center">My Projects</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Project 1 -->
-      <div class="project-card bg-blue-800 rounded-lg shadow-lg p-6">
-        <h3 class="text-xl font-bold text-white">Student Management System</h3>
-        <p class="mt-2 text-gray-300">A system to manage student records efficiently.</p>
-        <a href="https://github.com/Di-ya1103/Student_mngmnt_new.git" class="mt-4 inline-block text-blue-300 hover:text-blue-100 font-semibold">View on GitHub</a>
+      <div class="project-card bg-teal-700 rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="text-xl font-bold">Student Management System</h3>
+        <p class="mt-2">A system to manage student records efficiently.</p>
+        <a href="https://github.com/Di-ya1103/Student_mngmnt_new.git" class="mt-4 inline-block font-semibold hover:text-gray-200">View on GitHub</a>
       </div>
-      <!-- Project 2 -->
-      <div class="project-card bg-blue-800 rounded-lg shadow-lg p-6">
-        <h3 class="text-xl font-bold text-white">Marvel Food</h3>
-        <p class="mt-2 text-gray-300">A food-related web application with a modern UI.</p>
-        <a href="https://github.com/Di-ya1103/marvel-food.git" class="mt-4 inline-block text-blue-300 hover:text-blue-100 font-semibold">View on GitHub</a>
+      <div class="project-card bg-teal-700 rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-xl font-bold">Marvel Food</h3>
+        <p class="mt-2">A food-related web application with a modern UI.</p>
+        <a href="https://github.com/Di-ya1103/marvel-food.git" class="mt-4 inline-block font-semibold hover:text-gray-200">View on GitHub</a>
       </div>
-      <!-- Project 3 -->
-      <div class="project-card bg-blue-800 rounded-lg shadow-lg p-6">
-        <h3 class="text-xl font-bold text-white">CouponAI</h3>
-        <p class="mt-2 text-gray-300">An AI-powered coupon management system.</p>
-        <a href="https://github.com/Di-ya1103/couponai-main.git" class="mt-4 inline-block text-blue-300 hover:text-blue-100 font-semibold">View on GitHub</a>
+      <div class="project-card bg-teal-700 rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="300">
+        <h3 class="text-xl font-bold">CouponAI</h3>
+        <p class="mt-2">An AI-powered coupon management system.</p>
+        <a href="https://github.com/Di-ya1103/couponai-main.git" class="mt-4 inline-block font-semibold hover:text-gray-200">View on GitHub</a>
       </div>
-      <!-- Project 4 -->
-      <div class="project-card bg-blue-800 rounded-lg shadow-lg p-6">
-        <h3 class="text-xl font-bold text-white">Image Restore</h3>
-        <p class="mt-2 text-gray-300">A tool for restoring and enhancing images.</p>
-        <a href="https://github.com/Di-ya1103/image_restore.git" class="mt-4 inline-block text-blue-300 hover:text-blue-100 font-semibold">View on GitHub</a>
+      <div class="project-card bg-teal-700 rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="400">
+        <h3 class="text-xl font-bold">Image Restore</h3>
+        <p class="mt-2">A tool for restoring and enhancing images.</p>
+        <a href="https://github.com/Di-ya1103/image_restore.git" class="mt-4 inline-block font-semibold hover:text-gray-200">View on GitHub</a>
       </div>
-      <!-- Project 5 -->
-      <div class="project-card bg-blue-800 rounded-lg shadow-lg p-6">
-        <h3 class="text-xl font-bold text-white">Methane Molecule AR/VR</h3>
-        <p class="mt-2 text-gray-300">An AR/VR visualization of the methane molecule.</p>
-        <a href="https://github.com/Di-ya1103/methane_molecule_ar_vr.git" class="mt-4 inline-block text-blue-300 hover:text-blue-100 font-semibold">View on GitHub</a>
+      <div class="project-card bg-teal-700 rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="500">
+        <h3 class="text-xl font-bold">Methane Molecule AR/VR</h3>
+        <p class="mt-2">An AR/VR visualization of the methane molecule.</p>
+        <a href="https://github.com/Di-ya1103/methane_molecule_ar_vr.git" class="mt-4 inline-block font-semibold hover:text-gray-200">View on GitHub</a>
       </div>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section class="bg-blue-900 text-white py-12 text-center">
-    <h2 class="text-3xl font-semibold animate-bounce">Get in Touch</h2>
-    <p class="mt-4 text-lg">Interested in collaborating or learning more? Reach out!</p>
-    <a href="mailto:your.email@example.com" class="mt-6 inline-block bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-500 transition-colors duration-300">Contact Me</a>
+  <section class="contact-section bg-red-900 text-white py-12 text-center" data-aos="zoom-in" data-aos-duration="1200">
+    <div id="particles-js"></div>
+    <h2 class="text-3xl font-semibold gradient-text relative z-10">Get in Touch</h2>
+    <p class="mt-4 text-lg relative z-10">Interested in collaborating or learning more? Reach out!</p>
+    <a >Contact Me at diya.dave1103@gmail.com</a>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-indigo-900 text-white text-center py-4">
+  <footer class="bg-indigo-950 text-white text-center py-4" data-aos="fade-up" data-aos-duration="1000">
     <p>© 2025 Diya. All rights reserved.</p>
   </footer>
 
-  <!-- JavaScript for Smooth Scroll -->
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
+    // Initialize AOS
+    AOS.init();
+
+    // Smooth Scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -114,6 +167,25 @@
           behavior: 'smooth'
         });
       });
+    });
+
+    // Particles.js for Contact Section
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: '#2c6b6f' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.5, random: true },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: '#2c6b6f', opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 6, direction: 'none', random: false, straight: false }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+        modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+      },
+      retina_detect: true
     });
   </script>
 </body>
